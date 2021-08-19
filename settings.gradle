@@ -1,0 +1,4 @@
+rootProject.name = 'appium-fast-boilerplate'
+include 'appium-android'
+include 'appium-ios'
+
