@@ -10,10 +10,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'io.appium:java-client:7.5.1'
+    implementation 'org.seleniumhq.selenium:selenium-server:3.141.59'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    testImplementation group: 'org.testng', name: 'testng', version: '7.4.0'
 }
 
 test {
-    useJUnitPlatform()
+    useTestNG()
+    testLogging.showStandardStreams = true
 }
