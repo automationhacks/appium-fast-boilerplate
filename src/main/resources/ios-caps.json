@@ -1,0 +1,9 @@
+{
+  "platformName": "iOS",
+  "platformVersion": "",
+  "automationName": "XCUITest",
+  "deviceName": "Automation",
+  "app": "",
+  "appPackage": "",
+  "appActivity": ""
+}
