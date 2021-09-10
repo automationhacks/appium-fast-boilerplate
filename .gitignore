@@ -26,3 +26,6 @@ build/
 
 .idea/
 .gradle/
+
+ApiDemos-debug*
+TestApp.app*

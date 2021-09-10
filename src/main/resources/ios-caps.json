@@ -1,9 +1,6 @@
 {
   "platformName": "iOS",
-  "platformVersion": "",
   "automationName": "XCUITest",
-  "deviceName": "Automation",
-  "app": "",
-  "appPackage": "",
-  "appActivity": ""
+  "deviceName": "iPhone 12 Pro Max",
+  "app": "src/test/resources/TestApp.app.zip"
 }

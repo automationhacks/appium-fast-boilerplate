@@ -1,8 +1,8 @@
 {
   "platformName": "android",
-  "platformVersion": "",
+  "platformVersion": "10",
   "deviceName": "Automation",
-  "app": "",
-  "appPackage": "",
-  "appActivity": ""
+  "app": "src/test/resources/ApiDemos-debug.apk",
+  "appPackage": "io.appium.android.apis",
+  "appActivity": "io.appium.android.apis.ApiDemos"
 }
