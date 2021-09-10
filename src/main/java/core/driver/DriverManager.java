@@ -1,38 +1,56 @@
 package core.driver;
 
 import constants.Platform;
-import core.utils.FileReader;
+import exceptions.PlatformNotSupportException;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+
+import static core.utils.CapabilitiesHelper.readAndMakeCapabilities;
 
 public class DriverManager {
-    public static void main(String[] args) {
-        DriverManager manager = new DriverManager();
-        manager.getInstance(Platform.ANDROID);
-    }
+    private static AppiumDriver driver;
+    String APPIUM_SERVER_URL = "http://127.0.0.1:4723/wd/hub";
 
-    public AppiumDriver getInstance(Platform platform) {
+    public AppiumDriver getInstance(Platform platform) throws IOException, PlatformNotSupportException {
         switch (platform) {
             case ANDROID:
                 return getAndroidDriver();
             case IOS:
                 return getIOSDriver();
+            default:
+                throw new PlatformNotSupportException("Please provide supported platform");
         }
-        return null;
     }
 
-    private AppiumDriver getIOSDriver() {
-        return null;
+    private AppiumDriver getAndroidDriver() throws IOException {
+        HashMap map = readAndMakeCapabilities("android-caps.json");
+        return getDriver(map);
     }
 
-    private AndroidDriver getAndroidDriver() {
-        String caps = "";
-        caps = new FileReader().readFile("android-caps.json");
-
-        // TODO: Convert JSON string to JSON Object
-        // TODO: Make desired capabilities object from JSON Object
-        return null;
+    private AppiumDriver getIOSDriver() throws IOException {
+        HashMap map = readAndMakeCapabilities("ios-caps.json");
+        return getDriver(map);
     }
+
+    private AppiumDriver getDriver(HashMap map) {
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities(map);
+
+        try {
+            driver = new AppiumDriver(
+                    new URL(APPIUM_SERVER_URL), desiredCapabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return driver;
+    }
+
+
 }
 
 
