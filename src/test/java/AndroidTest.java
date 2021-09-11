@@ -1,17 +1,22 @@
 import constants.Platform;
-import core.driver.DriverManager;
-import exceptions.PlatformNotSupportException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.apidemos.home.APIDemosHomePage;
 
-import java.io.IOException;
+public class AndroidTest extends BaseTest {
 
-public class AndroidTest {
+    public AndroidTest() {
+        super(Platform.ANDROID);
+    }
+
     @Test
-    public void testAndroid() {
-        try {
-            new DriverManager().getInstance(Platform.ANDROID);
-        } catch (IOException | PlatformNotSupportException e) {
-            e.printStackTrace();
-        }
+    public void testLogText() {
+        String logText = new APIDemosHomePage(this.driver)
+                .openText()
+                .tapOnLogTextBox()
+                .tapOnAddButton()
+                .getLogText();
+
+        Assert.assertEquals(logText, "This is a test");
     }
 }
