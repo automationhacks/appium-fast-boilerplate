@@ -1,6 +1,0 @@
-{
-  "platformName": "iOS",
-  "automationName": "XCUITest",
-  "deviceName": "iPhone 12 Pro Max",
-  "app": "src/test/resources/TestApp.app.zip"
-}
