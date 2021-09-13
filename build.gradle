@@ -9,15 +9,32 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(Test) {
+    systemProperties = [
+            tag     : System.getProperty('tag', 'NONE'),
+            platform: System.getProperty('platform', 'Android')
+    ]
+    systemProperties System.getProperties()
+}
+
+compileTestJava {
+    options.encoding = "UTF-8"
+}
+
+task runTests(type: Test) {
+    useTestNG {
+        useDefaultListeners = false
+        testLogging.showStandardStreams = true
+        includeGroups System.getProperty('tag', 'NONE')
+        outputDirectory = file("$buildDir/" + System.getProperty('tag', 'NONE'))
+    }
+}
+
+
 dependencies {
     implementation 'io.appium:java-client:7.5.1'
     implementation 'org.seleniumhq.selenium:selenium-server:3.141.59'
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'com.fasterxml:jackson-xml-databind:0.6.2'
     testImplementation group: 'org.testng', name: 'testng', version: '7.1.0'
-}
-
-test {
-    useTestNG()
-    testLogging.showStandardStreams = true
 }
