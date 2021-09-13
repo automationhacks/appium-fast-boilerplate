@@ -23,9 +23,18 @@
 hs_err_pid*
 
 build/
-
 .idea/
 .gradle/
+*.iml
+.gradle
+local.properties
+.DS_Store
+captures/
+out/
+.git/
+bin/
+output/
+
 
 ApiDemos-debug*
 TestApp.app*
