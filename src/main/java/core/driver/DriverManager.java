@@ -14,7 +14,8 @@ import static core.utils.CapabilitiesHelper.readAndMakeCapabilities;
 
 public class DriverManager {
     private static AppiumDriver driver;
-    String APPIUM_SERVER_URL = "http://127.0.0.1:4723/wd/hub";
+    // For Appium < 2.0, append /wd/hub to the APPIUM_SERVER_URL
+    String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
 
     public AppiumDriver getInstance(Platform platform) throws IOException, PlatformNotSupportException {
         switch (platform) {
