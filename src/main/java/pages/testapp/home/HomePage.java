@@ -9,10 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage {
 
-    @FindBy(name = "TextField1")
+    @FindBy(name = "IntegerA")
     private WebElement firstNumber;
 
-    @FindBy(name = "TextField2")
+    @FindBy(name = "IntegerB")
     private WebElement secondNumber;
 
     @FindBy(name = "ComputeSumButton")

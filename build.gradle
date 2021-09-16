@@ -12,7 +12,7 @@ repositories {
 tasks.withType(Test) {
     systemProperties = [
             tag     : System.getProperty('tag', 'NONE'),
-            platform: System.getProperty('platform', 'Android')
+            platform: System.getProperty('platform', 'ANDROID')
     ]
     systemProperties System.getProperties()
 }
