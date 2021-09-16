@@ -1,17 +1,14 @@
-import constants.Platform;
-import core.driver.DriverManager;
-import exceptions.PlatformNotSupportException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.testapp.home.HomePage;
 
-import java.io.IOException;
-
-public class IOSTest {
+public class IOSTest extends BaseTest {
     @Test
-    public void testIOS() {
-        try {
-            new DriverManager().getInstance(Platform.IOS);
-        } catch (IOException | PlatformNotSupportException e) {
-            e.printStackTrace();
-        }
+    public void addNumbers() {
+        String actualSum = new HomePage(this.driver)
+                .enterTwoNumbersAndCompute("5", "5")
+                .getSum();
+
+        Assert.assertEquals(actualSum, "10");
     }
 }

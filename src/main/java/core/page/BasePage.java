@@ -1,6 +1,7 @@
 package core.page;
 
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,5 +24,14 @@ public class BasePage {
     public void waitForElementToBeVisible(WebElement elem) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(elem));
+    }
+
+    public void waitForElementToBePresent(By by) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
+    public void type(WebElement elem, String text) {
+        elem.sendKeys(text);
     }
 }
