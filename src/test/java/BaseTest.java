@@ -1,4 +1,4 @@
-import constants.Platform;
+import constants.Target;
 import core.driver.DriverManager;
 import core.utils.PropertiesReader;
 import exceptions.PlatformNotSupportException;
@@ -13,19 +13,19 @@ public class BaseTest {
     protected AppiumDriver driver;
     protected PropertiesReader reader = new PropertiesReader();
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setup(ITestContext context) {
-        context.setAttribute("platform", reader.getPlatform());
+        context.setAttribute("target", reader.getTarget());
 
         try {
-            Platform platform = (Platform) context.getAttribute("platform");
-            this.driver = new DriverManager().getInstance(platform);
+            Target target = (Target) context.getAttribute("target");
+            this.driver = new DriverManager().getInstance(target);
         } catch (IOException | PlatformNotSupportException e) {
             e.printStackTrace();
         }
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void teardown() {
         driver.quit();
     }

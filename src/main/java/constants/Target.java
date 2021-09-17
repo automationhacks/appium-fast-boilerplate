@@ -1,6 +1,6 @@
 package constants;
 
-public enum Platform {
+public enum Target {
     ANDROID,
     IOS
 }

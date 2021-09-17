@@ -11,8 +11,8 @@ repositories {
 
 tasks.withType(Test) {
     systemProperties = [
-            tag     : System.getProperty('tag', 'NONE'),
-            platform: System.getProperty('platform', 'ANDROID')
+            tag   : System.getProperty('tag', 'NONE'),
+            target: System.getProperty('target', 'NONE')
     ]
     systemProperties System.getProperties()
 }

@@ -1,6 +1,6 @@
 package core.driver;
 
-import constants.Platform;
+import constants.Target;
 import exceptions.PlatformNotSupportException;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -17,14 +17,15 @@ public class DriverManager {
     // For Appium < 2.0, append /wd/hub to the APPIUM_SERVER_URL
     String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
 
-    public AppiumDriver getInstance(Platform platform) throws IOException, PlatformNotSupportException {
-        switch (platform) {
+    public AppiumDriver getInstance(Target target) throws IOException, PlatformNotSupportException {
+        System.out.println("Getting instance of: " + target.name());
+        switch (target) {
             case ANDROID:
                 return getAndroidDriver();
             case IOS:
                 return getIOSDriver();
             default:
-                throw new PlatformNotSupportException("Please provide supported platform");
+                throw new PlatformNotSupportException("Please provide supported target");
         }
     }
 

@@ -1,9 +1,11 @@
+import constants.TestGroups;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.testapp.home.HomePage;
 
 public class IOSTest extends BaseTest {
-    @Test
+
+    @Test(groups = {TestGroups.IOS})
     public void addNumbers() {
         String actualSum = new HomePage(this.driver)
                 .enterTwoNumbersAndCompute("5", "5")

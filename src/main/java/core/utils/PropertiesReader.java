@@ -1,9 +1,10 @@
 package core.utils;
 
-import constants.Platform;
+import constants.Target;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Properties;
 
 public class PropertiesReader {
@@ -17,8 +18,14 @@ public class PropertiesReader {
         }
     }
 
-    public Platform getPlatform() {
-        return Platform.valueOf(props.getProperty("platform"));
+    public Target getTarget() {
+        String target = System.getProperty("target");
+
+        if (Objects.equals(target, "NONE")) {
+            return Target.valueOf(props.getProperty("target"));
+        } else {
+            return Target.valueOf(target);
+        }
     }
 
     public void load() throws IOException {
