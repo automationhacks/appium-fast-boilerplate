@@ -21,10 +21,10 @@
 ## Run Android tests
 
 ```zsh
-./gradlew clean build runTests -Dtag="ANDROID" -Ddevice="ANDROID"
+gradle wrapper clean build runTests -Dtag="ANDROID" -Ddevice="ANDROID"
 ```
 
 ```zsh
-./gradlew clean build runTests -Dtag="IOS" -Dtarget="IOS"
+gradle wrapper clean build runTests -Dtag="IOS" -Dtarget="IOS"
 ```
 

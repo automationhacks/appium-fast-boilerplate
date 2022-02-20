@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class BasePage {
     protected AppiumDriver driver;
 
@@ -15,6 +17,14 @@ public class BasePage {
 
     public void click(WebElement elem) {
         elem.click();
+    }
+
+    public WebElement getElement(By by) {
+        return driver.findElement(by);
+    }
+
+    public List<WebElement> getElements(By by) {
+        return driver.findElements(by);
     }
 
     public String getText(WebElement elem) {
