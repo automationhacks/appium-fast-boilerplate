@@ -2,5 +2,5 @@
   "platformName": "iOS",
   "automationName": "XCUITest",
   "deviceName": "iPhone 13",
-  "app": "src/test/resources/TestApp.app"
+  "app": "src/test/resources/TestApp.app.zip"
 }
