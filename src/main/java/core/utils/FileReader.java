@@ -6,18 +6,13 @@ import java.nio.file.Files;
 import java.util.Objects;
 
 public class FileReader {
-    public String readFile(String fileName) {
+    public String readFile(String fileName) throws IOException {
         ClassLoader load = getClass().getClassLoader();
         File file = new File(Objects.requireNonNull(load.getResource(fileName)).getFile());
         return getString(file);
     }
 
-    private String getString(File file) {
-        try {
-            return new String(Files.readAllBytes(file.toPath()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
+    private String getString(File file) throws IOException {
+        return new String(Files.readAllBytes(file.toPath()));
     }
 }

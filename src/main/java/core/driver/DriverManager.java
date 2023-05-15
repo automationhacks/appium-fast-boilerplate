@@ -46,7 +46,7 @@ public class DriverManager {
             driver = new AppiumDriver(
                     new URL(APPIUM_SERVER_URL), desiredCapabilities);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Invalid URL: " + APPIUM_SERVER_URL, e);
         }
 
         return driver;

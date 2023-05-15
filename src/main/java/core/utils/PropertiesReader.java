@@ -8,14 +8,10 @@ import java.util.Objects;
 import java.util.Properties;
 
 public class PropertiesReader {
-    Properties props = new Properties();
+    private final Properties props = new Properties();
 
     public PropertiesReader() {
-        try {
-            load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        load();
     }
 
     public Target getTarget() {
@@ -28,12 +24,15 @@ public class PropertiesReader {
         }
     }
 
-    public void load() throws IOException {
-        String propertyFileName = "env.properties";
+    public void load() {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
+        String propertyFileName = "env.properties";
         try (InputStream stream = loader.getResourceAsStream(propertyFileName)) {
             props.load(stream);
+        }
+        catch (IOException e) {
+            throw new RuntimeException("Failed to read file " + propertyFileName, e);
         }
     }
 }
