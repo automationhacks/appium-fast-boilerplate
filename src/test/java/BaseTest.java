@@ -14,19 +14,16 @@ public class BaseTest {
     protected PropertiesReader reader = new PropertiesReader();
 
     @BeforeMethod(alwaysRun = true)
-    public void setup(ITestContext context) {
+    public void setup(ITestContext context) throws PlatformNotSupportException, IOException {
         context.setAttribute("target", reader.getTarget());
-
-        try {
-            Target target = (Target) context.getAttribute("target");
-            this.driver = new DriverManager().getInstance(target);
-        } catch (IOException | PlatformNotSupportException e) {
-            e.printStackTrace();
-        }
+        Target target = (Target) context.getAttribute("target");
+        this.driver = new DriverManager().getInstance(target);
     }
 
     @AfterMethod(alwaysRun = true)
     public void teardown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
