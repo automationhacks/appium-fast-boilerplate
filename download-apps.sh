@@ -1,3 +1,6 @@
+# exit when any command fails
+set -e
+
 # Download Demo apps for android and iOS from appium Github repo
 # TODO: Files downloaded with below error out on trying to init AppiumServer, Find and fix this error
 BASE_PATH=./src/test/resources
