@@ -6,6 +6,7 @@ IOS_APP=TestApp.app.zip
 ANDROID_PATH=$BASE_PATH/$ANDROID_APP
 IOS_PATH=$BASE_PATH/$IOS_APP
 
+mkdir -p $BASE_PATH
 echo "Downloading sample files ..."
 wget --no-check-certificate --content-disposition https://github.com/appium/appium/blob/master/sample-code/apps/$ANDROID_APP
 mv $ANDROID_APP $ANDROID_PATH
