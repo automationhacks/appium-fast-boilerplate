@@ -8,9 +8,9 @@ IOS_PATH=$BASE_PATH/$IOS_APP
 
 mkdir -p $BASE_PATH
 echo "Downloading sample files ..."
-wget --no-check-certificate --content-disposition https://github.com/appium/appium/blob/master/sample-code/apps/$ANDROID_APP
+wget --no-check-certificate --content-disposition https://github.com/appium/appium/raw/master/packages/appium/sample-code/apps/$ANDROID_APP
 mv $ANDROID_APP $ANDROID_PATH
-wget --no-check-certificate --content-disposition https://github.com/appium/appium/blob/master/sample-code/apps/$IOS_APP
+wget --no-check-certificate --content-disposition https://github.com/appium/appium/raw/master/packages/appium/sample-code/apps/$IOS_APP
 mv $IOS_APP $IOS_PATH
 #tar -xvf $IOS_PATH
 #rm $IOS_PATH
